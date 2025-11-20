@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Narutodle Breaker",
   "version": "1.0",
-  "description": "Automatically reveals the character of the day..",
+  "description": "Automatically reveals the character of the day...",
   "permissions": ["activeTab", "scripting"],
 
   "action": {
