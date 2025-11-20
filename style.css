@@ -1,75 +1,213 @@
+:root {
+    --naruto-orange: #ff9900;
+    --naruto-blue: #0057b7;
+    --akatsuki-cloud: #9e1a1a;
+    --dark-bg: #121212;
+    --panel-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
-    width: 250px;
-    background-color: #1a1a1a; /* Preto ninja */
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 350px;
+    min-height: 450px;
     margin: 0;
-    padding: 0;
-    border: 4px solid #f85e00; /* Laranja Naruto */
-}
-
-.container {
     padding: 20px;
+    background-color: var(--dark-bg);
+    background-image: 
+        radial-gradient(circle at 50% 0%, #2a2a2a 0%, transparent 70%),
+        repeating-linear-gradient(45deg, #1a1a1a 0, #1a1a1a 10px, #151515 10px, #151515 20px);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
     text-align: center;
-    background: radial-gradient(circle, #2a2a2a 0%, #111 100%);
+    margin-bottom: 25px;
+    position: relative;
 }
 
-.header h1 {
-    color: #f85e00;
-    margin: 0 0 15px 0;
-    font-size: 24px;
+h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    margin: 0;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0px #000;
-    border-bottom: 2px solid #f85e00;
-    padding-bottom: 10px;
+    color: var(--naruto-orange);
+    text-shadow: 3px 3px 0px #000, 0 0 15px rgba(255, 153, 0, 0.5);
+    transform: skew(-5deg);
 }
 
-#solve-btn {
-    background-color: #f85e00;
-    color: black;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 4px;
+.subtitle {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: -5px;
     text-transform: uppercase;
-    transition: transform 0.1s, background 0.2s;
+    letter-spacing: 3px;
+}
+
+/* Grid de Botões */
+.mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
     width: 100%;
-    box-shadow: 0 4px 0 #b34300; /* Efeito 3D */
+    margin-bottom: 20px;
 }
 
-#solve-btn:hover {
-    background-color: #ff7b00;
-    transform: translateY(-2px);
+/* Estilo Geral dos Botões */
+.ninja-btn {
+    background: var(--panel-bg);
+    border: 2px solid #333;
+    color: #fff;
+    padding: 15px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
-#solve-btn:active {
-    transform: translateY(2px);
-    box-shadow: none;
+.ninja-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--naruto-orange);
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
 }
 
-.hidden {
-    display: none;
+.ninja-btn:active {
+    transform: scale(0.95);
 }
 
+/* Ícones SVG dentro dos botões */
+.btn-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-bottom: 5px;
+    transition: transform 0.5s;
+}
+
+/* Estilo Específico: Classic */
+#btn-classic:hover {
+    color: var(--naruto-orange);
+}
+
+/* Estilo Específico: Jutsu (Hand sign vibe) */
+#btn-jutsu:hover {
+    color: var(--naruto-blue);
+    border-color: var(--naruto-blue);
+    box-shadow: 0 0 15px rgba(0, 87, 183, 0.4);
+}
+
+/* Estilo Específico: Quote */
+#btn-quote:hover {
+    color: #4ade80; /* Green text */
+    border-color: #4ade80;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* Estilo Específico: Eye (Sharingan) */
+#btn-eye {
+    border-color: #500;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a0a0a 100%);
+}
+
+#btn-eye:hover {
+    color: #ff4444;
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+#btn-eye:hover .btn-icon {
+    animation: spinSharingan 2s infinite linear;
+}
+
+@keyframes spinSharingan {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Área de Resultado (Estilo Pergaminho) */
 #result-area {
-    margin-bottom: 15px;
-    background-color: #000;
-    padding: 10px;
-    border: 1px dashed #f85e00;
-    border-radius: 5px;
-    animation: fadeIn 0.5s;
+    width: 100%;
+    background-color: #f0e6d2; /* Cor de papel velho */
+    color: #2c1810;
+    padding: 15px;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 10px;
+    display: none; /* Hidden by default */
+    border-top: 8px solid #8b0000; /* Cabo do pergaminho */
+    border-bottom: 8px solid #8b0000;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+    animation: unroll 0.6s ease-out forwards;
+    text-align: center;
+}
+
+@keyframes unroll {
+    0% { opacity: 0; transform: scaleY(0); height: 0; }
+    100% { opacity: 1; transform: scaleY(1); height: auto; }
+}
+
+/* Detalhes do Resultado */
+.result-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #8b0000;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 #character-name {
-    color: #ffdb4d; /* Amarelo trovão */
-    font-size: 22px;
-    margin: 5px 0 0 0;
-    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    margin: 0;
+    color: #000;
+    letter-spacing: 1px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+/* Status/Feedback Message */
+#status-msg {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #666;
+    height: 20px;
+}
+
+/* Efeito de brilho ao clicar */
+.glow-effect {
+    animation: chakraPulse 1s;
+}
+
+@keyframes chakraPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 153, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 153, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 153, 0, 0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
 }
