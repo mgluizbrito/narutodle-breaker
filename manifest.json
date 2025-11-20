@@ -4,10 +4,20 @@
   "version": "1.0",
   "description": "Automatically reveals the character of the day..",
   "permissions": ["activeTab", "scripting"],
+
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Abrir Pergaminho"
+    "default_title": "Narutodle Breaker",
+    "default_icon": {
+      "48": "icon48.png"
+    }
   },
+  
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+
   "content_scripts": [
     {
       "matches": ["https://narutodle.net/*"],
