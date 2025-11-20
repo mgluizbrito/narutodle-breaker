@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Narutodle Breaker",
+  "version": "1.0",
+  "description": "Automatically reveals the character of the day..",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Abrir Pergaminho"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://narutodle.net/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
